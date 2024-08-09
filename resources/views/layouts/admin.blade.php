@@ -61,12 +61,14 @@ h3.menu-title {
     text-align: center;
     padding: 8px;
 }
-.vertical-layout.vertical-content-menu.2-columns.fixed-navbar.pace-done.menu-collapsed .menu-title[data-i18n="nav.dash.main"] {
-    display: none;
+
+@media (max-width: 1000px) {
+    .drawing {
+        display: none;
+    }
 }
-.hidden {
-            display: none;
-        }
+
+
 </style>
   <link rel="stylesheet" type="text/css"href="{{asset("assets/css/style-rtl.css")}}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -157,9 +159,9 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
 
 
           </ul>
-        </div>
 
-        <div class="main-menu-content">
+
+
             <h3 class="menu-title" data-i18n="nav.dash.main">الموظفين <h1/>
           <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
@@ -167,7 +169,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 <span class="menu-title" data-i18n="nav.dash.main">الموظفين</span>
               </a>
 
-                <ul class="menu-content">
+
 
                     @if(Auth::user()->can_read==1)
 
@@ -192,8 +194,8 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
 
 
           </ul>
-        </div>
-        <div class="main-menu-content">
+
+
             <h3 class="menu-title" data-i18n="nav.dash.main">المبيعات <h1/>
           <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
@@ -316,9 +318,9 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
 
 
           </ul>
-        </div>
 
-        <div class="main-menu-content">
+
+
             <h3 class="menu-title" data-i18n="nav.dash.main">استلام & تسليم <h3/>
           <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item"><a href="#">
@@ -432,9 +434,9 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
 
 
           </ul>
-        </div>
 
-        <div class="main-menu-content">
+
+
 
             <h3 class="menu-title" data-i18n="nav.dash.main">      الشكاوي  <h3/>
 
@@ -517,27 +519,31 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <script>
-    document.getElementById('toggleButton').addEventListener('click', function() {
-        var body = document.body;
-        var menuTitle = document.querySelector('.menu-title');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to check body class and toggle the visibility of all h3 elements with class menu-title
+        function checkBodyClass() {
+            var body = document.body;
+            var menuTitles = document.querySelectorAll('h3.menu-title');
 
-        // Toggle the body class
-        if (body.classList.contains('menu-expanded')) {
-            body.classList.remove('menu-expanded');
-            body.classList.add('menu-collapsed');
-        } else {
-            body.classList.remove('menu-collapsed');
-            body.classList.add('menu-expanded');
+            menuTitles.forEach(function(title) {
+                if (body.classList.contains('menu-collapsed')) {
+                    title.style.display = 'none';
+                } else {
+                    title.style.display = 'block';
+                }
+            });
         }
 
-        // Hide the h3 element when the body class is 'menu-collapsed'
-        if (body.classList.contains('menu-collapsed')) {
-            menuTitle.classList.add('hidden');
-        } else {
-            menuTitle.classList.remove('hidden');
-        }
+        // Initial check
+        checkBodyClass();
+
+        // Monitor class changes on the body element
+        var observer = new MutationObserver(checkBodyClass);
+        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
     });
 </script>
+
+
 
   @livewireScripts
   @stack('js')

@@ -299,7 +299,7 @@
     </div>
     @endif
 
-        <div class="row">
+        <div class="row drawing">
 
             <div class="col-md-6">
                 <div class="card">
