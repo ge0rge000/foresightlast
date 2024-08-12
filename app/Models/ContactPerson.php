@@ -16,6 +16,7 @@ class ContactPerson extends Model
         'mobile_number',
         'second_mobile_number',
         'address',
+        'job',
         'company_id',
         'created_at',
         'updated_at',
@@ -36,5 +37,5 @@ class ContactPerson extends Model
         return $this->hasMany(Following::class);
     }
 
-  
+
 }

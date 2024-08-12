@@ -48,6 +48,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="second_mobile_number"> </label>
+                                <input type="text" id="second_mobile_number" class="form-control" placeholder="وظيفه"
+                                wire:model="job">
+                                @error('job') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+
+                    </div>
                     {{-- <div wire:ignore>
                         <select class="form-control" id="select2" multiple>
                             <option value="">Select Option</option>

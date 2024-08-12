@@ -5,21 +5,30 @@ use Livewire\Component;
 use App\Models\Complain;
 use App\Models\User;
 use App\Models\ReceiveOrder;
+use App\Models\ContactPerson;
+use App\Models\Company;
+
+
 use Auth;
 class EditComplainComponent extends Component
 {
     public $complainId;
-    public $name_complain, $number_of_person, $compain, $user_id, $recieve_order_id;
+    public $name_complain, $number_of_person, $compain, $user_id, $recieve_order_id,$selected_comapny;
 
     public function mount($id)
     {
+
         $complain = Complain::find($id);
+
         $this->complainId = $complain->id;
         $this->name_complain = $complain->name_complain;
         $this->number_of_person = $complain->number_of_person;
         $this->compain = $complain->compain;
         $this->user_id = $complain->user_id;
         $this->recieve_order_id = $complain->recieve_order_id;
+        $company_select=ReceiveOrder::where('id',$complain->recieve_order_id)->first();
+        $this->selected_comapny = $company_select->company->id;
+
     }
 
     public function submitForm()
@@ -47,6 +56,8 @@ class EditComplainComponent extends Component
     {
         $users = User::all();
         $receiveOrders = ReceiveOrder::all();
-        return view('livewire.dashboard.compalins.edit-complain-component', compact('users', 'receiveOrders'))->layout('layouts.admin');
+        $persons = ContactPerson::where('company_id', $this->selected_comapny)->get();
+        $compaines = Company::all();
+        return view('livewire.dashboard.compalins.edit-complain-component', compact('users', 'receiveOrders','persons','compaines'))->layout('layouts.admin');
     }
 }

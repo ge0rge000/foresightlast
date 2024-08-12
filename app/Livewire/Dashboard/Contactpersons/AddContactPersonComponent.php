@@ -14,6 +14,7 @@ class AddContactPersonComponent extends Component
     public $second_mobile_number;
     public $address;
     public $selectedCompany; // Array to hold selected companies
+    public $job; // Array to hold selected companies
 
     protected $rules = [
         'name' => 'required|string|max:255',
@@ -32,15 +33,13 @@ class AddContactPersonComponent extends Component
     ];
     public function submitForm()
     {
-
         $this->validate();
-
-
         $contactPerson = ContactPerson::create([
             'name' => $this->name,
             'mobile_number' => $this->mobile_number,
             'second_mobile_number' => $this->second_mobile_number,
             'address' => $this->address,
+            'job' => $this->job,
             'company_id' => $this->selectedCompany,
         ]);
 

@@ -69,6 +69,7 @@
             <div class="table-responsive">
                 <table class="table table-bordered vertical-table">
                     <tbody>
+
                         <tr>
                             <th> رقم الاوردر</th>
                             <td>{{ $receiveOrder->id }}</td>
@@ -124,6 +125,14 @@
                         <tr>
                             <th>الضمان</th>
                             <td>{{ $receiveOrder->guarantee_status == "1" ? 'يوجد ضمان' : 'لا يوجد ضمان' }}</td>
+                        </tr>
+                        <tr>
+                            <th> تاريخ الاستلام</th>
+                            <td>{{ $receiveOrder->created_at }}</td>
+                        </tr>
+                        <tr>
+                            <th> تاريخ التسليم</th>
+                            <td>{{ $receiveOrder->updated_at }}</td>
                         </tr>
                         <tr>
                             <th>الامضاء</th>

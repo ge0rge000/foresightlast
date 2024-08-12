@@ -40,6 +40,7 @@
                                     <th scope="col">رقم موبايل</th>
                                     <th scope="col">رقم موبايل اخر</th>
                                     <th scope="col">عنوان</th>
+                                    <th scope="col">وظيفه</th>
                                     <th scope="col">الشركات</th>
                                     <th scope="col">الاجراءت</th>
                                 </tr>
@@ -52,6 +53,8 @@
                                         <td>{{ $contactPerson->mobile_number }}</td>
                                         <td>{{ $contactPerson->second_mobile_number }}</td>
                                         <td>{{ $contactPerson->address }}</td>
+                                        <td>{{ $contactPerson->job }}</td>
+
                                         <td>
                                         {{$contactPerson->company->name_company}}
 

@@ -29,6 +29,7 @@
                                 @error('mobile_number') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -45,6 +46,17 @@
                                 @error('address') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="second_mobile_number"> </label>
+                                <input type="text" id="second_mobile_number" class="form-control" placeholder="وظيفه"
+                                wire:model="job">
+                                @error('job') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+
                     </div>
                     <div class="form-group" >
                         <label for="selected_companies">الشركات</label>
