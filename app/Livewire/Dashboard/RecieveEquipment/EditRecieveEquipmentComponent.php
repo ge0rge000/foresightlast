@@ -26,6 +26,8 @@ class EditRecieveEquipmentComponent extends Component
     public $indicator_equipment_id;
     public $serial;
     public $person_receive;
+    public $date_recieve;
+
 
     public function mount($id)
     {
@@ -43,6 +45,7 @@ class EditRecieveEquipmentComponent extends Component
         $this->indicator_equipment_id = $receiveOrder->indicator_equipment_id;
         $this->serial = $receiveOrder->serial;
         $this->person_receive = $receiveOrder->person_receive;
+        $this->date_recieve = $receiveOrder->date_recieve;
 
     }
 
@@ -75,7 +78,8 @@ class EditRecieveEquipmentComponent extends Component
             'type_tool_id' => $this->type_tool_id,
             'indicator_equipment_id' => $this->indicator_equipment_id,
             'equipment_id' => $this->equipment_id,
-            'person_receive'=>$this->person_receive
+            'person_receive'=>$this->person_receive,
+            'date_recieve'=>$this->date_recieve
 
         ]);
 

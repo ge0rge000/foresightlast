@@ -26,6 +26,7 @@ class AddRecieveEquipmentComponent extends Component
     public $equipment_id;
     public $serial;
     public $person_receive;
+    public $date_recieve;
 
 
     protected $rules = [
@@ -66,7 +67,9 @@ class AddRecieveEquipmentComponent extends Component
             'indicator_equipment_id' => $this->indicator_equipment_id,
             'guarantee_status' => "0",
             'case_status' => "Receive",
-            'person_receive'=>$this->person_receive
+            'person_receive'=>$this->person_receive,
+            'date_recieve'=>$this->date_recieve
+
         ]);
 
         session()->flash('success', 'تم إضافة المعدة وأمر الاستلام بنجاح!');

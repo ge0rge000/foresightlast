@@ -99,6 +99,10 @@
                         <input type="text" id="another_number_person" class="form-control" wire:model="another_number_person">
                         @error('another_number_person') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="date_recieve">تاريخ تسليم المعده </label>
+                        <input type="date" name="date_recieve" id="date_recieve" class="form-control"  wire:model="date_recieve">
+                    </div>
                 </div>
                 <div class="form-actions">
                     <button type="button" onclick="goBack()" class="btn btn-warning mr-1">

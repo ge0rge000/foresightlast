@@ -132,12 +132,13 @@
                             <td>{{ $receiveOrder->guarantee_status == "1" ? 'يوجد ضمان' : 'لا يوجد ضمان' }}</td>
                         </tr>
                         <tr>
-                            <th> تاريخ الاستلام</th>
-                            <td>{{ $receiveOrder->created_at }}</td>
+                            <th>تاريخ الاستلام</th>
+                            <td>{{ $receiveOrder->created_at->format('Y-m-d') }}</td>
                         </tr>
+
                         <tr>
                             <th> تاريخ التسليم</th>
-                            <td>{{ $receiveOrder->updated_at }}</td>
+                            <td>{{ $receiveOrder->date_recieve }}</td>
                         </tr>
                         <tr>
                             <th>الامضاء</th>
