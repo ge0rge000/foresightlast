@@ -22,11 +22,13 @@ class EditContactPersonComponent extends Component
         'second_mobile_number' => 'nullable|string|max:255',
         'address' => 'required|string|max:255',
         'selectedCompany' => 'required', //
+        'job' => 'required', //
+
     ];
 
     public function mount($id)
     {
-       
+
         $contactPerson = ContactPerson::findOrFail($id);
         $this->contactPersonId = $contactPerson->id;
         $this->name = $contactPerson->name;
