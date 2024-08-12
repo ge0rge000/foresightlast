@@ -25,7 +25,6 @@
                         <th>اسم المتابع</th>
                         <th>اسم شركه</th>
                         <th>الاسم تابع للشركه</th>
-                        <th>نوع الاستجابه</th>
                         <th>نوع المتابعة</th>
                         <th>وقت  اتصال اخر </th>
                         <th>تاريخ اتصال اخر </th>
@@ -40,7 +39,6 @@
                             <td>{{ $follow->user->name }}</td>
                             <td>{{ $follow->contactPerson->company->name_company }}</td>
                             <td>{{ $follow->contactPerson->name }}</td>
-                            <td>{{ $follow->response->type_response }}</td>
                             <td>{{ $follow->typefollow == 'visit' ? 'زياره' : 'مكالمة' }}</td>
                             <td>{{ $follow->time_calling }}</td>
                             <td>{{ $follow->date_calling }}</td>

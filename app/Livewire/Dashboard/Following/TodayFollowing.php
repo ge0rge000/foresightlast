@@ -29,9 +29,6 @@ class TodayFollowing extends Component
                         ->orWhereHas('company', function (Builder $query) use ($searchTerm) {
                             $query->where('name_company', 'like', $searchTerm);
                         });
-                })
-                ->orWhereHas('response', function (Builder $query) use ($searchTerm) {
-                    $query->where('type_response', 'like', $searchTerm);
                 });
             })
             ->paginate(10);
