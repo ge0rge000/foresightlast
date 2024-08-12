@@ -13,7 +13,7 @@ use Auth;
 class EditFollowingComponent extends Component
 {
     public $followingId;
-    public $user_id, $person_id, $response_id, $comments, $selected_comapny, $typefollow, $time_calling_date, $time_calling_time;
+    public $user_id, $person_id, $comments, $selected_comapny, $typefollow, $time_calling_date, $time_calling_time;
 
     public function mount($id)
     {
@@ -22,7 +22,6 @@ class EditFollowingComponent extends Component
         $this->followingId = $following->id;
         $this->user_id = $following->user_id;
         $this->person_id = $following->person_id;
-        $this->response_id = $following->response_id;
         $this->comments = $following->comments;
         $this->selected_comapny = $following->contactPerson->company_id;
         $this->typefollow = $following->typefollow;
@@ -38,7 +37,6 @@ class EditFollowingComponent extends Component
         $this->validate([
             'user_id' => 'required',
             'person_id' => 'required',
-            'response_id' => 'required',
             'comments' => 'nullable|string',
             'typefollow' => 'required|in:visit,call',
             'time_calling_date' => 'nullable',
@@ -50,7 +48,6 @@ class EditFollowingComponent extends Component
         $following->update([
             'user_id' => Auth::user()->id,
             'person_id' => $this->person_id,
-            'response_id' => $this->response_id,
             'comments' => $this->comments,
             'typefollow' => $this->typefollow,
             'time_calling' => $this->time_calling_time,
@@ -67,7 +64,7 @@ class EditFollowingComponent extends Component
         $responses = ClientResponse::all();
         $compaines = Company::all();
 
-        return view('livewire.dashboard.following.edit-following-component', compact('users', 'persons', 'responses', 'compaines'))->layout('layouts.admin');
+        return view('livewire.dashboard.following.edit-following-component', compact('users', 'persons',  'compaines'))->layout('layouts.admin');
     }
 }
 

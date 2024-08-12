@@ -24,6 +24,11 @@
                             @endforeach
                         </select>
                         @error('indicator_equipment_id') <span class="text-danger">{{ $message }}</span> @enderror
+                        <div class="form-group">
+                            <label for="equipment_name">تعليق </label>
+                            <input type="text" id="serial" class="form-control" wire:model="comment">
+                            @error('comment') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
                     </div>
                     <div class="form-group">
                         <labبel for="type_tool_id">نوع </labبel التجاريةel>

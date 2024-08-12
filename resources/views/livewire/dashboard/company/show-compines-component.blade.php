@@ -31,6 +31,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">اسم الشركة</th>
                                     <th scope="col">النشاط</th>
+                                    <th scope="col">نوع الاستجابه</th>
                                     <th scope="col">المحافظة</th>
                                     <th scope="col">المدينة</th>
                                     <th scope="col">العنوان</th>
@@ -44,6 +45,7 @@
                                         <th scope="row">{{ $company->id }}</th>
                                         <td>{{ $company->name_company }}</td>
                                         <td>{{ $company->activity->name_of_activity }}</td>
+                                        <td>{{ optional($company->response)->type_response }}</td>
                                         <td>{{ $company->governorate->governorate_name_ar }}</td>
                                         <td>{{ $company->city->city_name_ar }}</td>
                                         <td>{{ $company->address }}</td>

@@ -12,7 +12,6 @@ class Following extends Model
     protected $fillable = [
         'user_id',
         'person_id',
-        'response_id',
         'comments',
         'created_at',
         'updated_at',
@@ -31,8 +30,5 @@ class Following extends Model
         return $this->belongsTo(ContactPerson::class, 'person_id');
     }
 
-    public function response()
-    {
-        return $this->belongsTo(ClientResponse::class, 'response_id');
-    }
+ 
 }

@@ -35,7 +35,7 @@ class ShowFollowingComponent extends Component
         ];
 
         $this->translatedSearchTerm = $searchTermTranslations[$this->searchTerm] ?? $this->searchTerm;
-$followinsgs = Following::with(['user', 'contactPerson', 'response', 'contactPerson.company'])
+$followinsgs = Following::with(['user', 'contactPerson',  'contactPerson.company'])
     ->where(
         function (Builder $query) use ($searchTerm) {
         $query->whereHas('user', function (Builder $query) use ($searchTerm) {
@@ -51,9 +51,7 @@ $followinsgs = Following::with(['user', 'contactPerson', 'response', 'contactPer
                       $query->where('name_company', 'like', $searchTerm);
                   });
         })
-        ->orWhereHas('response', function (Builder $query) use ($searchTerm) {
-            $query->where('type_response', 'like', $searchTerm);
-        })
+
         ->orWhere('typefollow', 'like', "%{$this->translatedSearchTerm}%");
     })
     ->get();

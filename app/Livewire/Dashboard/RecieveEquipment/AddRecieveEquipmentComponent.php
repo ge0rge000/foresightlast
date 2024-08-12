@@ -18,6 +18,7 @@ class AddRecieveEquipmentComponent extends Component
     public $number_person;
     public $another_number_person;
     public $date;
+    public $comment;
     public $company_id;
     public $brand_id;
     public $type_tool_id;
@@ -60,6 +61,7 @@ class AddRecieveEquipmentComponent extends Component
             'another_number_person' => $this->another_number_person,
             'company_id' => $this->company_id,
             'brand_id' => $this->brand_id,
+            'comment' => $this->comment,
             'type_tool_id' => $this->type_tool_id,
             'indicator_equipment_id' => $this->indicator_equipment_id,
             'guarantee_status' => "0",

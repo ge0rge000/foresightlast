@@ -22,6 +22,7 @@ class ReceiveOrder extends Model
         'person_receive',
         'created_at',
         'updated_at',
+        'comment',
         'brand_id',
         'type_tool_id',
         'indicator_equipment_id',

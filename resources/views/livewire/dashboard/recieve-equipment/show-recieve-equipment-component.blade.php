@@ -60,6 +60,7 @@
                             <th>المعدة</th>
                             <th>البراند</th>
                             <th>البيان</th>
+                            <th>تعليق</th>
                             <th>النوع</th>
                             <th>السيريال</th>
                             <th>اسم الشركه</th>
@@ -81,6 +82,8 @@
                                 <td>{{ $order->equipment->name }}</td>
                                 <td>{{ $order->Brand->name }}</td>
                                 <td>{{ $order->indicator_equipment->name }}</td>
+                                <td>{{ $order->comment }}</td>
+
                                 <td>{{ $order->type_tool->name }}</td>
                                 <td>{{ $order->serial }}</td>
                                 <td>{{ $order->company->name_company }}</td>

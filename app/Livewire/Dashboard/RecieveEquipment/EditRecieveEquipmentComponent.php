@@ -19,6 +19,7 @@ class EditRecieveEquipmentComponent extends Component
     public $number_person;
     public $another_number_person;
     public $date;
+    public $comment;
     public $company_id;
     public $brand_id;
     public $type_tool_id;
@@ -36,6 +37,7 @@ class EditRecieveEquipmentComponent extends Component
         $this->number_person = $receiveOrder->number_person;
         $this->another_number_person = $receiveOrder->another_number_person;
         $this->company_id = $receiveOrder->company_id;
+        $this->comment = $receiveOrder->comment;
         $this->brand_id = $receiveOrder->brand_id;
         $this->type_tool_id = $receiveOrder->type_tool_id;
         $this->indicator_equipment_id = $receiveOrder->indicator_equipment_id;
@@ -58,7 +60,7 @@ class EditRecieveEquipmentComponent extends Component
     public function submitForm()
     {
         $this->validate();
-     
+
         $receiveOrder = ReceiveOrder::findOrFail($this->receiveOrderId);
         $receiveOrder->update([
             'user_id' => Auth::user()->id,
@@ -68,6 +70,7 @@ class EditRecieveEquipmentComponent extends Component
             'another_number_person' => $this->another_number_person,
             'serial' => $this->serial,
             'company_id' => $this->company_id,
+            'comment' => $this->comment,
             'brand_id' => $this->brand_id,
             'type_tool_id' => $this->type_tool_id,
             'indicator_equipment_id' => $this->indicator_equipment_id,

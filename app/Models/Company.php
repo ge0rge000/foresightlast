@@ -15,6 +15,7 @@ class Company extends Model
         'government_id',
         'city_id',
         'address',
+        'response_id', // Add response_id here
         'user_id_register',
         'created_at',
         'updated_at',
@@ -43,5 +44,9 @@ class Company extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id_register');
+    }
+    public function response()
+    {
+        return $this->belongsTo(ClientResponse::class, 'response_id');
     }
 }

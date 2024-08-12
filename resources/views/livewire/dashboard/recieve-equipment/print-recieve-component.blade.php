@@ -79,24 +79,28 @@
                             <td>{{ $receiveOrder->user->name }}</td>
                         </tr>
                         <tr>
-                            <th>المعدة</th>
-                            <td>{{ $receiveOrder->equipment->name }}</td>
-                        </tr>
-                        <tr>
-                            <th>البراند</th>
-                            <td>{{ $receiveOrder->Brand->name }}</td>
-                        </tr>
-                        <tr>
                             <th>البيان</th>
                             <td>{{ $receiveOrder->indicator_equipment->name }}</td>
+                        </tr>
+                        <tr>
+                            <th>تعليق</th>
+                            <td>{{ $receiveOrder->comment }}</td>
+                        </tr>
+                        <tr>
+                            <th>السيريال</th>
+                            <td>{{ $receiveOrder->serial }}</td>
                         </tr>
                         <tr>
                             <th>النوع</th>
                             <td>{{ $receiveOrder->type_tool->name }}</td>
                         </tr>
                         <tr>
-                            <th>السيريال</th>
-                            <td>{{ $receiveOrder->serial }}</td>
+                            <th>البراند</th>
+                            <td>{{ $receiveOrder->Brand->name }}</td>
+                        </tr>
+                        <tr>
+                            <th>المعدة</th>
+                            <td>{{ $receiveOrder->equipment->name }}</td>
                         </tr>
                         <tr>
                             <th>اسم الشركه</th>
@@ -107,13 +111,14 @@
                             <td>{{ $receiveOrder->name_person }}</td>
                         </tr>
                         <tr>
-                            <th>اسم شخص المستلم</th>
-                            <td>{{ $receiveOrder->person_receive }}</td>
-                        </tr>
-                        <tr>
                             <th>رقم الشخص</th>
                             <td>{{ $receiveOrder->number_person }}</td>
                         </tr>
+                        <tr>
+                            <th>اسم شخص المستلم</th>
+                            <td>{{ $receiveOrder->person_receive }}</td>
+                        </tr>
+
                         <tr>
                             <th>رقم شخص آخر</th>
                             <td>{{ $receiveOrder->another_number_person }}</td>

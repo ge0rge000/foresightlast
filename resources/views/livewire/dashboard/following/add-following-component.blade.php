@@ -32,19 +32,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="response_id">الاستجابة</label>
-                                <select id="response_id" class="form-control" wire:model="response_id">
-                                    <option value="" selected >اختر الاستجابة</option>
-                                    @foreach($responses as $response)
-                                        <option value="{{ $response->id }}">{{ $response->type_response }}</option>
-                                    @endforeach
-                                </select>
-                                @error('response_id') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="typefollow">نوع المتابعة</label>
                                 <select id="typefollow" class="form-control" wire:model="typefollow">

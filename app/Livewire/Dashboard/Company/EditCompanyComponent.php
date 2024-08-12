@@ -7,6 +7,8 @@ use App\Models\Governorate;
 use App\Models\City;
 use App\Models\Company;
 use Auth;
+use App\Models\ClientResponse;
+
 
 class EditCompanyComponent extends Component
 {
@@ -17,6 +19,7 @@ class EditCompanyComponent extends Component
     public $address;
     public $cities = [];
     public $company_id; // For editing purposes
+    public $response_id;
 
     protected $rules = [
         'name_company' => 'required|string|max:255',
@@ -24,6 +27,8 @@ class EditCompanyComponent extends Component
         'governorate_id' => 'required',
         'city_id' => 'required|integer',
         'address' => 'required|string|max:255',
+        'response_id' => 'required',
+
     ];
 
     public function mount($companyId)
@@ -35,6 +40,8 @@ class EditCompanyComponent extends Component
         $this->governorate_id = $company->government_id;
         $this->city_id = $company->city_id;
         $this->address = $company->address;
+        $this->response_id = $company->response_id;
+
     }
 
     public function submitForm()
@@ -46,6 +53,7 @@ class EditCompanyComponent extends Component
             'name_company' => $this->name_company,
             'activity_company' => $this->activity_company,
             'government_id' => $this->governorate_id,
+            'response_id' => $this->response_id,
             'city_id' => $this->city_id,
             'address' => $this->address,
             'user_id_register' => Auth::id(), // Optional, only if you want to track who updated it
@@ -61,6 +69,8 @@ class EditCompanyComponent extends Component
         return view('livewire.dashboard.company.edit-company-component', [
             'activities' => Activity::all(),
             'governorates' => Governorate::all(),
+            'responses'=>ClientResponse::all()
+
         ])->layout('layouts.admin');
     }
 

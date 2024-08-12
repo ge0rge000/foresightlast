@@ -27,6 +27,21 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="typefollow">نوع الاستجابه</label>
+                                <select id="typefollow" class="form-control" wire:model="response_id">
+                                    <option value="" selected >اختر نوع الاستجابه</option>
+                                    @foreach ($responses as $response )
+                                    <option value="{{$response->id}}">{{$response->type_response}}</option>
+                                    @endforeach
+                                 </select>
+                                @error('typefollow') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="governorate_id">المحافظة</label>

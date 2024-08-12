@@ -6,6 +6,8 @@ use App\Models\Activity;
 use App\Models\Governorate;
 use App\Models\City;
 use App\Models\Company;
+use App\Models\ClientResponse;
+
 use Auth;
 class AddCompanyComponent extends Component
 {
@@ -15,6 +17,7 @@ class AddCompanyComponent extends Component
     public $city_id;
     public $address;
     public $user_id_register;
+    public $response_id;
     public $cities = [];
 
     protected $rules = [
@@ -23,6 +26,7 @@ class AddCompanyComponent extends Component
         'governorate_id' => 'required',
         'city_id' => 'required|integer',
         'address' => 'required|string|max:255',
+        'response_id' => 'required',
 
     ];
 
@@ -34,6 +38,7 @@ class AddCompanyComponent extends Component
             'name_company' => $this->name_company,
             'activity_company' => $this->activity_company,
             'government_id' => $this->governorate_id,
+            'response_id' => $this->response_id,
             'city_id' => $this->city_id,
             'address' => $this->address,
             'user_id_register' => Auth::id(), // Corrected line
@@ -48,9 +53,11 @@ class AddCompanyComponent extends Component
     public function render()
     {
         $this->cities = City::where('governorate_id', $this->governorate_id)->get();
+
         return view('livewire.dashboard.company.add-company-component', [
             'activities' => Activity::all(),
             'governorates' => Governorate::all(),
+            'responses'=>ClientResponse::all()
         ])->layout('layouts.admin');
     }
     public function updatedGovernorateId($value)
