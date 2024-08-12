@@ -15,7 +15,7 @@ class TodayFollowing extends Component
     {
         $searchTerm = '%' . $this->searchTerm . '%';
 
-        $todaysFollowings = Following::with(['user', 'contactPerson', 'response', 'contactPerson.company'])
+        $todaysFollowings = Following::with(['user', 'contactPerson',  'contactPerson.company'])
             ->whereDate('date_calling', Carbon::today())
             ->where(function (Builder $query) use ($searchTerm) {
                 $query->whereHas('user', function (Builder $query) use ($searchTerm) {
