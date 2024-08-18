@@ -35,6 +35,8 @@
                                     <th scope="col">المحافظة</th>
                                     <th scope="col">المدينة</th>
                                     <th scope="col">العنوان</th>
+                                    <th scope="col">التصنيف</th>
+
                                     <th scope="col">المسجل</th>
                                     <th scope="col">الإجراءات</th>
                                 </tr>
@@ -49,6 +51,7 @@
                                         <td>{{ $company->governorate->governorate_name_ar }}</td>
                                         <td>{{ $company->city->city_name_ar }}</td>
                                         <td>{{ $company->address }}</td>
+                                        <td>{{ $company->classification }}</td>
                                         <td>{{ $company->user->name }}</td>
                                         <td>
                                             @if(Auth::user()->can_update==1)

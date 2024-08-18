@@ -113,7 +113,7 @@ Route::middleware([
     Route::get('/client-responses/add', AddClientResponseComponent::class)->name('add_client_response');
     Route::get('/client-responses/edit/{id}', EditClientRespnseComponent::class)->name('edit_response');
     ///following
-    Route::get('/client-followings', ShowFollowingComponent::class)->name('show_following');
+    Route::get('/client-followings/{typefollow?}', ShowFollowingComponent::class)->name('show_following');
     Route::get('/client-following/add', AddFollowingComponent::class)->name('add_following');
     Route::get('/client-followings/edit/{id}',EditFollowingComponent::class)->name('edit_following');
     Route::get('/todays-following', TodayFollowing::class)->name('todaysfollowing');

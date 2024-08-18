@@ -19,6 +19,7 @@ class AddCompanyComponent extends Component
     public $user_id_register;
     public $response_id;
     public $cities = [];
+    public $classification;
 
     protected $rules = [
         'name_company' => 'required|string|max:255',
@@ -27,7 +28,7 @@ class AddCompanyComponent extends Component
         'city_id' => 'required|integer',
         'address' => 'required|string|max:255',
         'response_id' => 'required',
-
+        'classification' => 'required|string|max:1', // Add validation rule for classification
     ];
 
     public function submitForm()
@@ -41,25 +42,29 @@ class AddCompanyComponent extends Component
             'response_id' => $this->response_id,
             'city_id' => $this->city_id,
             'address' => $this->address,
-            'user_id_register' => Auth::id(), // Corrected line
+            'user_id_register' => Auth::id(),
+            'classification' => $this->classification, // Add classification
         ]);
-
 
         session()->flash('success', 'تم اضافه شركه بنجاح');
         return redirect()->route('show_company');
-
     }
+
+
 
     public function render()
-    {
-        $this->cities = City::where('governorate_id', $this->governorate_id)->get();
+{
+    $this->cities = City::where('governorate_id', $this->governorate_id)->get();
 
-        return view('livewire.dashboard.company.add-company-component', [
-            'activities' => Activity::all(),
-            'governorates' => Governorate::all(),
-            'responses'=>ClientResponse::all()
-        ])->layout('layouts.admin');
-    }
+    return view('livewire.dashboard.company.add-company-component', [
+        'activities' => Activity::all(),
+        'governorates' => Governorate::all(),
+        'responses' => ClientResponse::all(),
+        // If you have predefined classifications:
+        'classifications' => ['a', 'b', 'c', 'd']
+    ])->layout('layouts.admin');
+}
+
     public function updatedGovernorateId($value)
     {
         $this->cities = City::where('governorate_id', $value)->get();

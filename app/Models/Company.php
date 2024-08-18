@@ -17,6 +17,7 @@ class Company extends Model
         'address',
         'response_id', // Add response_id here
         'user_id_register',
+        'classification', // Add classification here
         'created_at',
         'updated_at',
     ];

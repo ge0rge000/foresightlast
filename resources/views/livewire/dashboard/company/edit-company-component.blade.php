@@ -73,6 +73,22 @@
                         @error('address') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="classification">تصنيف الشركة</label>
+                            <select id="classification" class="form-control" wire:model="classification">
+                                <option value="" selected>اختر التصنيف</option>
+                                <option value="a" @if($classification == 'a') selected @endif>A</option>
+                                <option value="b" @if($classification == 'b') selected @endif>B</option>
+                                <option value="c" @if($classification == 'c') selected @endif>C</option>
+                                <option value="d" @if($classification == 'd') selected @endif>D</option>
+                            </select>
+                            @error('classification') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-actions">
                     <button type="button" onclick="goBack()" class="btn btn-warning mr-1">
                         <i class="ft-x"></i> إلغاء

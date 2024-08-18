@@ -78,6 +78,22 @@
                     </div>
 
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="classification">تصنيف الشركة</label>
+                            <select id="classification" class="form-control" wire:model="classification">
+                                <option value="" selected>اختر التصنيف</option>
+                                <option value="a">A</option>
+                                <option value="b">B</option>
+                                <option value="c">C</option>
+                                <option value="d">D</option>
+                            </select>
+                            @error('classification') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-actions">
                     <button type="button" onclick="goBack()" class="btn btn-warning mr-1">
                         <i class="ft-x"></i> إلغاء

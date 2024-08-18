@@ -12,6 +12,8 @@ class ShowRecieveEquipmentComponent extends Component
 {
     use WithPagination;
     public $searchTerm;
+    public $date_recieve;
+    public $created_at;
 
     public function updatingSearchTerm()
     {
@@ -50,29 +52,27 @@ class ShowRecieveEquipmentComponent extends Component
             session()->flash('error', 'أمر الاستلام غير موجود.');
         }
     }
-
     public function render()
     {
-
         $searchTerm = '%' . $this->searchTerm . '%';
 
-        $receiveOrders = ReceiveOrder::where('name_person', 'like', $searchTerm)
-        ->orWhere('number_person', 'like', $searchTerm)
-        ->orWhere('another_number_person', 'like', $searchTerm)
-        ->orWhere('person_receive', 'like', $searchTerm)
-        ->orWhereHas('equipment', function (Builder $query) use ($searchTerm) {
-            $query->where('name', 'like', $searchTerm);
-        })->orWhereHas('user', function (Builder $query) use ($searchTerm) {
-            $query->where('name', 'like', $searchTerm);
-
-        })->orWhereHas('company', function (Builder $query) use ($searchTerm) {
-            $query->where('name_company', 'like', $searchTerm);
+        $receiveOrders = ReceiveOrder::where(function (Builder $query) use ($searchTerm) {
+            $query->where('name_person', 'like', $searchTerm)
+                ->orWhere('number_person', 'like', $searchTerm)
+                ->orWhere('another_number_person', 'like', $searchTerm)
+                ->orWhere('person_receive', 'like', $searchTerm)
+                ->orWhere('serial', 'like', $searchTerm)
+                ->orWhere('date_recieve', 'like', $searchTerm)
+                ->orWhere('created_at', 'like', $searchTerm)
+                ->orWhereHas('equipment', function (Builder $query) use ($searchTerm) {
+                    $query->where('name', 'like', $searchTerm);
+                })->orWhereHas('user', function (Builder $query) use ($searchTerm) {
+                    $query->where('name', 'like', $searchTerm);
+                })->orWhereHas('company', function (Builder $query) use ($searchTerm) {
+                    $query->where('name_company', 'like', $searchTerm);
+                });
         })
-        ->orWhere('serial', 'like', $searchTerm)
-        -> get();
-
-
-
+        ->get();
 
         return view('livewire.dashboard.recieve-equipment.show-recieve-equipment-component', ['receiveOrders' => $receiveOrders])->layout('layouts.admin');
     }

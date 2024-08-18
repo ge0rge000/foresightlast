@@ -278,7 +278,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                     @if(Auth::user()->can_read==1)
 
                     <li class="{{ Route::currentRouteName() == 'show_following' ? 'active' : '' }}">
-                        <a class="menu-item" href="{{ route('show_following') }}" data-i18n="nav.dash.crypto">المتباعات</a>
+                        <a class="menu-item" href="{{ route('show_following') }}" data-i18n="nav.dash.crypto">المتابعات</a>
                     </li>
                     @endif
                     @if(Auth::user()->can_create==1)

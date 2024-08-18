@@ -44,6 +44,10 @@
         <div class="col-md-12">
             <input type="text" class="form-control" placeholder="بحث بالاسم او اسم شركه او ارقام الموبايل او عنوان" wire:model.live.debounce.500ms="searchTerm">
         </div>
+        <div class="col-md-12">
+            <label for="created_at">تاريخ اتصال اخر</label>
+            <input type="date" id="created_at" class="form-control" placeholder="تاريخ اتصال اخؤ" wire:model.live.debounce.500ms="searchTerm">
+        </div>
     </div>
 
     <div class="card-content collapse show">

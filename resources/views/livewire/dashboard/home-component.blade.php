@@ -2,8 +2,8 @@
 
     <div class="row">
         <div class="col-xl-4 col-lg-6 col-12">
-            <div class="card pull-up">
-              <div class="card-content">
+            <div class="card pull-up" style="cursor: pointer;" onclick="window.location='{{ route('show_company') }}'">
+                <div class="card-content">
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
@@ -21,8 +21,8 @@
             </div>
           </div>
           <div class="col-xl-4 col-lg-6 col-12">
-            <div class="card pull-up">
-              <div class="card-content">
+            <div class="card pull-up" style="cursor: pointer;" onclick="window.location='{{ route('show_contacts') }}'">
+                <div class="card-content">
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
@@ -39,8 +39,8 @@
             </div>
           </div>
           <div class="col-xl-4 col-lg-6 col-12">
-            <div class="card pull-up">
-              <div class="card-content">
+            <div class="card pull-up" style="cursor: pointer;" onclick="window.location='{{ route('show_following') }}'">
+                <div class="card-content">
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="col-xl-4 col-lg-6 col-12">
-            <div class="card pull-up" style="cursor: pointer;" >
+            <div class="card pull-up"  >
                 <div class="card-content">
                     <div class="card-body">
                         <div class="media d-flex">
@@ -113,8 +113,8 @@
 
 
         <div class="col-xl-4 col-lg-6 col-12">
-          <div class="card pull-up">
-            <div class="card-content">
+            <div class="card pull-up" style="cursor: pointer;" onclick="window.location='{{ route('show-receive-equipment') }}'">
+                <div class="card-content">
               <div class="card-body">
                 <div class="media d-flex">
                   <div class="media-body text-left">

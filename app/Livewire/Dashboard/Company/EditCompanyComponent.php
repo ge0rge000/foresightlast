@@ -20,7 +20,7 @@ class EditCompanyComponent extends Component
     public $cities = [];
     public $company_id; // For editing purposes
     public $response_id;
-
+    public $classification;
     protected $rules = [
         'name_company' => 'required|string|max:255',
         'activity_company' => 'required',
@@ -28,7 +28,7 @@ class EditCompanyComponent extends Component
         'city_id' => 'required|integer',
         'address' => 'required|string|max:255',
         'response_id' => 'required',
-
+        'classification' => 'required|string|max:1', // Add validation rule for classification
     ];
 
     public function mount($companyId)
@@ -41,6 +41,7 @@ class EditCompanyComponent extends Component
         $this->city_id = $company->city_id;
         $this->address = $company->address;
         $this->response_id = $company->response_id;
+        $this->classification = $company->classification;
 
     }
 
@@ -56,8 +57,10 @@ class EditCompanyComponent extends Component
             'response_id' => $this->response_id,
             'city_id' => $this->city_id,
             'address' => $this->address,
-            'user_id_register' => Auth::id(), // Optional, only if you want to track who updated it
+            'user_id_register' => Auth::id(),
+            'classification' => $this->classification, // Add classification
         ]);
+
 
         session()->flash('success', 'تم تحديث بيانات الشركة بنجاح');
         return redirect()->route('show_company');

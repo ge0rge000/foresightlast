@@ -39,12 +39,27 @@
             {{ session('error') }}
         </div>
     @endif
-
     <div class="row mb-3">
         <div class="col-md-12">
-            <input type="text" class="form-control" placeholder=" بحث باسم المعده اوسيريال المعده او اسم شركه او اسم الشخص الذي سلم المعده او رقم شخص اخر او اسم الشخص المستبم او السيريال  " wire:model.live.debounce.500ms="searchTerm">
+            <label for="searchTerm">بحث</label>
+            <input type="text" id="searchTerm" class="form-control" placeholder="بحث باسم المعده اوسيريال المعده او اسم شركه او اسم الشخص الذي سلم المعده او رقم شخص اخر او اسم الشخص المستبم او السيريال" wire:model.live.debounce.500ms="searchTerm">
         </div>
     </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="created_at">تاريخ الاستلام</label>
+            <input type="date" id="created_at" class="form-control" placeholder="تاريخ الاستلام" wire:model.live.debounce.500ms="searchTerm">
+        </div>
+        <div class="col-md-6">
+            <label for="date_recieve">تاريخ التسليم</label>
+            <input type="date" id="date_recieve" class="form-control" placeholder="تاريخ التسليم" wire:model.live.debounce.500ms="searchTerm">
+        </div>
+
+
+    </div>
+
+
 
     <div class="card-content collapse show">
         <div class="card-body">
