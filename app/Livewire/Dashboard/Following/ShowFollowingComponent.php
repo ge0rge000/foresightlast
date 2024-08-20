@@ -42,6 +42,7 @@ $followinsgs = Following::with(['user', 'contactPerson',  'contactPerson.company
 
             $query->where('name', 'like', $searchTerm);
         })
+        ->orWhere('created_at', 'like', $searchTerm)
         ->orWhereHas('contactPerson', function (Builder $query) use ($searchTerm) {
             $query->where('name', 'like', $searchTerm)
                   ->orWhere('mobile_number', 'like', $searchTerm)

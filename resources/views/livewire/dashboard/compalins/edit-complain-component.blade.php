@@ -49,7 +49,16 @@
                                 @error('compain') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="reaction_complain">رد الشكوى</label>
+                                <textarea id="reaction_complain" class="form-control" placeholder="رد الشكوى" wire:model="reaction_complain"></textarea>
+                                @error('reaction_complain') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
                     </div>
+
+
                     <div class="row">
 
                         <div class="col-md-12">

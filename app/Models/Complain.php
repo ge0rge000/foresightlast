@@ -13,6 +13,7 @@ class Complain extends Model
         'name_complain',
         'number_of_person',
         'compain',
+        'reaction_complain',  // Add this line
         'user_id',
         'recieve_order_id',
         'created_at',

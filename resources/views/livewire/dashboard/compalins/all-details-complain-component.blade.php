@@ -40,6 +40,10 @@
                             <td>{{ $complain->compain }}</td>
                         </tr>
                         <tr>
+                            <th>رد شكوي</th>
+                            <td>{{ $complain->reaction_complain }}</td>
+                        </tr>
+                        <tr>
                             <th>المستخدم</th>
                             <td>{{ $complain->user->name }}</td>
                         </tr>
