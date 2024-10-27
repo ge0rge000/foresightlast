@@ -3,7 +3,11 @@
     <div class="card-content collapse show">
         <div class="card-body">
             <h4 class="form-section"><i class="ft-user"></i> تفاصيل الشكوى</h4>
-            <div class="table-responsive">
+
+            <!-- Print Button -->
+            <button onclick="printDiv()" class="btn btn-primary mb-3">طباعة</button>
+
+            <div class="table-responsive" id="printableArea">
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
@@ -16,10 +20,9 @@
                         </tr>
                         <tr>
                             <th>الشركه التابعه</th>
-
                             <td>{{ $complain->receiveOrder->company->name_company }}</td>
                         </tr>
-                           <tr>
+                        <tr>
                             <th>البيان</th>
                             <td>{{ $complain->receiveOrder->indicator_equipment->name }}</td>
                         </tr>
@@ -57,3 +60,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    function printDiv() {
+        var printContents = document.getElementById('printableArea').innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+</script>

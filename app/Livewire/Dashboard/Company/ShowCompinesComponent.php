@@ -35,6 +35,8 @@ class ShowCompinesComponent extends Component
 
         $companies = Company::with(['activity', 'governorate', 'city', 'user','response'])
             ->where('name_company', 'like', $searchTerm)
+            ->orWhere('classification', 'like', $searchTerm)
+        ->orWhere('address', 'like', $searchTerm)
             ->orWhereHas('activity', function (Builder $query) use ($searchTerm) {
                 $query->where('name_of_activity', 'like', $searchTerm);
             })
@@ -43,9 +45,14 @@ class ShowCompinesComponent extends Component
             })
             ->orWhereHas('city', function (Builder $query) use ($searchTerm) {
                 $query->where('city_name_ar', 'like', $searchTerm);
+            })->orWhereHas('response', function (Builder $query) use ($searchTerm) {
+                $query->where('type_response', 'like', $searchTerm);
+            })->orWhereHas('activity', function (Builder $query) use ($searchTerm) {
+                $query->where('name_of_activity', 'like', $searchTerm);
             })
+
             ->paginate(10);
-          
+
         return view('livewire.dashboard.company.show-compines-component', ['companies' => $companies])->layout('layouts.admin');
     }
 }

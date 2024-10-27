@@ -66,11 +66,20 @@ class ShowRecieveEquipmentComponent extends Component
                 ->orWhere('created_at', 'like', $searchTerm)
                 ->orWhereHas('equipment', function (Builder $query) use ($searchTerm) {
                     $query->where('name', 'like', $searchTerm);
-                })->orWhereHas('user', function (Builder $query) use ($searchTerm) {
+                })
+                ->orWhereHas('user', function (Builder $query) use ($searchTerm) {
                     $query->where('name', 'like', $searchTerm);
-                })->orWhereHas('company', function (Builder $query) use ($searchTerm) {
+                })
+                ->orWhereHas('company', function (Builder $query) use ($searchTerm) {
                     $query->where('name_company', 'like', $searchTerm);
                 });
+
+            // Add search condition for case_status
+            if ($this->searchTerm == 'تم تسليم') {
+                $query->orWhere('case_status', '=', 'Deliver');
+            } elseif ($this->searchTerm == 'لم يتم تسليم') {
+                $query->orWhere('case_status', '=', 'Receive');
+            }
         })
         ->get();
 

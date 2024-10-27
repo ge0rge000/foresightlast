@@ -1,6 +1,35 @@
 <div>
+    <style>
+        body {
+            direction: rtl;
+            text-align: right;
+        }
 
-    <!-- Display success or error messages -->
+        table {
+            width: 100%;
+            direction: rtl;
+            text-align: right;
+        }
+
+        th,
+        td {
+            text-align: right;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+            table {
+                direction: rtl;
+                text-align: right;
+            }
+            th,
+            td {
+                text-align: right;
+            }
+        }
+    </style>
     @if (session()->has('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -22,10 +51,11 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">شركات</h4>
+                    <button onclick="printComplaintsTable()" class="btn btn-primary mb-3 no-print">طباعة الجدول</button>
                 </div>
                 <div class="card-content collapse show">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="compainesTable">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">#</th>
@@ -36,7 +66,6 @@
                                     <th scope="col">المدينة</th>
                                     <th scope="col">العنوان</th>
                                     <th scope="col">التصنيف</th>
-
                                     <th scope="col">المسجل</th>
                                     <th scope="col">الإجراءات</th>
                                 </tr>
@@ -55,11 +84,10 @@
                                         <td>{{ $company->user->name }}</td>
                                         <td>
                                             @if(Auth::user()->can_update==1)
-
-                                            <a href={{ route('edit_company', ['companyId' => $company->id]) }} class="btn btn-primary btn-sm">تعديل</a>
+                                                <a href={{ route('edit_company', ['companyId' => $company->id]) }} class="btn btn-primary btn-sm">تعديل</a>
                                             @endif
                                             @if(Auth::user()->can_delete==1)
-                                            <button wire:click="deleteCompany({{ $company->id }})" class="btn btn-danger btn-sm">حذف</button>
+                                                <button wire:click="deleteCompany({{ $company->id }})" class="btn btn-danger btn-sm">حذف</button>
                                             @endif
                                         </td>
                                     </tr>
@@ -72,4 +100,20 @@
             </div>
         </div>
     </div>
+
+    <!-- Missing iframe added -->
+    <iframe id="printIframe" style="display: none;"></iframe>
+
+    <script>
+        function printComplaintsTable() {
+            var table = document.getElementById("compainesTable").outerHTML;
+            var iframe = document.getElementById("printIframe");
+            var doc = iframe.contentDocument || iframe.contentWindow.document;
+            doc.open();
+            doc.write('<html lang="ar" dir="rtl"><head><title>Print</title><style>@media print { .no-print { display: none; } table { width: 100%; direction: rtl; text-align: right; } th, td { text-align: right; }}</style></head><body>' + table + '</body></html>');
+            doc.close();
+            iframe.contentWindow.focus();
+            iframe.contentWindow.print();
+        }
+    </script>
 </div>
