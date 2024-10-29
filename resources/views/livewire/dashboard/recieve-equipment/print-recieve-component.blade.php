@@ -107,11 +107,11 @@
                             <td>{{ $receiveOrder->company->name_company }}</td>
                         </tr>
                         <tr>
-                            <th>اسم الشخص</th>
+                            <th>اسم شخص المسلم</th>
                             <td>{{ $receiveOrder->name_person }}</td>
                         </tr>
                         <tr>
-                            <th>رقم الشخص</th>
+                            <th>  رقم الشخص المسلم</th>
                             <td>{{ $receiveOrder->number_person }}</td>
                         </tr>
                         <tr>
@@ -120,17 +120,20 @@
                         </tr>
 
                         <tr>
-                            <th>رقم شخص آخر</th>
+                            <th>رقم شخص المستلم</th>
                             <td>{{ $receiveOrder->another_number_person }}</td>
                         </tr>
                         <tr>
                             <th>الحالة</th>
                             <td>{{ $receiveOrder->case_status == "Receive" ? 'لم يتم تسليم' : 'تم تسليم' }}</td>
                         </tr>
+                        @if ($receiveOrder->guarantee_status == "1")
                         <tr>
                             <th>الضمان</th>
-                            <td>{{ $receiveOrder->guarantee_status == "1" ? 'يوجد ضمان' : 'لا يوجد ضمان' }}</td>
+                            <td>يوجد ضمان</td>
                         </tr>
+                    @endif
+
                         <tr>
                             <th>تاريخ الاستلام</th>
                             <td>{{ $receiveOrder->created_at->format('Y-m-d') }}</td>

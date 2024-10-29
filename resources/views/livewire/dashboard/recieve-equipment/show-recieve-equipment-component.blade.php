@@ -58,7 +58,15 @@
 
 
     </div>
-
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <label for="filterButtons">تصفية حسب الحالة</label>
+            <div id="filterButtons">
+                <button class="btn btn-outline-primary" wire:click="$set('searchTerm', 'تم تسليم')">تم تسليم</button>
+                <button class="btn btn-outline-primary" wire:click="$set('searchTerm', 'لم يتم تسليم')">لم يتم تسليم</button>
+            </div>
+        </div>
+    </div>
 
 
     <div class="card-content collapse show">
@@ -79,12 +87,15 @@
                             <th>النوع</th>
                             <th>السيريال</th>
                             <th>اسم الشركه</th>
-                            <th>اسم الشخص</th>
+                            <th>اسم الشخص المسلم </th>
+                            <th>رقم الشخص المسلم</th>
                             <th>  اسم شخص المستلم</th>
-                            <th>رقم الشخص</th>
-                            <th>رقم شخص آخر</th>
+                            <th>رقم شخص المستلم  </th>
                             <th>الحالة</th>
                             <th>الضمان</th>
+                            <th>تاريخ الاستلام</th>
+                            <th> تاريخ التسليم</th>
+
                             <th class="no-print">الإجراءات</th>
                             <th class="no-print">طباعه</th>
                         </tr>
@@ -103,8 +114,8 @@
                                 <td>{{ $order->serial }}</td>
                                 <td>{{ $order->company->name_company }}</td>
                                 <td>{{ $order->name_person }}</td>
-                                <td>{{ $order->person_receive }}</td>
                                 <td>{{ $order->number_person }}</td>
+                                <td>{{ $order->person_receive }}</td>
                                 <td>{{ $order->another_number_person }}</td>
                                 <td>
                                     {{ $order->case_status == "Receive" ? 'لم يتم تسليم' : 'تم تسليم' }}
@@ -118,6 +129,9 @@
                                         <i class="las la-sync-alt"></i>
                                     </button>
                                 </td>
+                                <td>{{ $order->created_at->format('Y-m-d') }}</td>
+                                <td>{{ $order->date_recieve }}</td>
+
                                 <td class="no-print">
                                     @if(Auth::user()->can_update==1)
                                         <a href="{{ route('edit-receive-equipment', $order->id) }}" class="btn btn-warning no-print">تعديل</a>

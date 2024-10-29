@@ -64,6 +64,8 @@
                                 <th>الشكوى</th>
                                 <th>المستخدم</th>
                                 <th>طلب الاستلام</th>
+                                <th>رد شكوي</th>
+
                                 <th class="no-print">الإجراءات</th>
                             </tr>
                         </thead>
@@ -77,6 +79,8 @@
                                     <td>{{ $complain->compain }}</td>
                                     <td>{{ $complain->user->name }}</td>
                                     <td>{{ $complain->receiveOrder->id }}</td>
+                                    <td>{{ $complain->reaction_complain }}</td>
+
                                     <td class="no-print">
                                         <a href="{{ route('details_complain', ['id' => $complain->id]) }}" class="btn btn-info">تفاصيل</a>
                                         @if(Auth::user()->can_update==1)

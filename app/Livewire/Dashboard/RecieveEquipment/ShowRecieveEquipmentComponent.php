@@ -74,7 +74,7 @@ class ShowRecieveEquipmentComponent extends Component
                     $query->where('name_company', 'like', $searchTerm);
                 });
 
-            // Add search condition for case_status
+            // Add specific filtering for case_status based on searchTerm
             if ($this->searchTerm == 'تم تسليم') {
                 $query->orWhere('case_status', '=', 'Deliver');
             } elseif ($this->searchTerm == 'لم يتم تسليم') {
@@ -85,4 +85,5 @@ class ShowRecieveEquipmentComponent extends Component
 
         return view('livewire.dashboard.recieve-equipment.show-recieve-equipment-component', ['receiveOrders' => $receiveOrders])->layout('layouts.admin');
     }
+
 }

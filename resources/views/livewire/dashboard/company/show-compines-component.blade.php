@@ -30,6 +30,7 @@
             }
         }
     </style>
+
     @if (session()->has('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -67,7 +68,7 @@
                                     <th scope="col">العنوان</th>
                                     <th scope="col">التصنيف</th>
                                     <th scope="col">المسجل</th>
-                                    <th scope="col">الإجراءات</th>
+                                    <th scope="col" class="print-hide">الإجراءات</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,7 +83,7 @@
                                         <td>{{ $company->address }}</td>
                                         <td>{{ $company->classification }}</td>
                                         <td>{{ $company->user->name }}</td>
-                                        <td>
+                                        <td class="print-hide">
                                             @if(Auth::user()->can_update==1)
                                                 <a href={{ route('edit_company', ['companyId' => $company->id]) }} class="btn btn-primary btn-sm">تعديل</a>
                                             @endif
@@ -101,19 +102,26 @@
         </div>
     </div>
 
-    <!-- Missing iframe added -->
     <iframe id="printIframe" style="display: none;"></iframe>
 
     <script>
         function printComplaintsTable() {
-            var table = document.getElementById("compainesTable").outerHTML;
-            var iframe = document.getElementById("printIframe");
-            var doc = iframe.contentDocument || iframe.contentWindow.document;
+            // Hide the actions column temporarily
+            const actionsColumns = document.querySelectorAll('.print-hide');
+            actionsColumns.forEach(col => col.style.display = 'none');
+
+            // Print the table
+            const table = document.getElementById("compainesTable").outerHTML;
+            const iframe = document.getElementById("printIframe");
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
             doc.open();
             doc.write('<html lang="ar" dir="rtl"><head><title>Print</title><style>@media print { .no-print { display: none; } table { width: 100%; direction: rtl; text-align: right; } th, td { text-align: right; }}</style></head><body>' + table + '</body></html>');
             doc.close();
             iframe.contentWindow.focus();
             iframe.contentWindow.print();
+
+            // Restore the actions column display
+            actionsColumns.forEach(col => col.style.display = '');
         }
     </script>
 </div>

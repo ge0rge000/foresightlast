@@ -33,7 +33,9 @@ class AddCompanyComponent extends Component
 
     public function submitForm()
     {
-        $this->validate();
+        $this->validate([
+            'name_company' => 'required|string|unique:companies,name_company',
+        ]);
 
         Company::create([
             'name_company' => $this->name_company,
