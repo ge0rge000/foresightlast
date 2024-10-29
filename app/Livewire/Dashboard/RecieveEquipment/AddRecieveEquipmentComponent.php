@@ -27,6 +27,7 @@ class AddRecieveEquipmentComponent extends Component
     public $serial;
     public $person_receive;
     public $date_recieve;
+    public $work_excute;
 
 
     protected $rules = [
@@ -38,6 +39,8 @@ class AddRecieveEquipmentComponent extends Component
         'type_tool_id' => 'required|exists:type_tools,id',
         'indicator_equipment_id' => 'required|exists:indicator_equipment,id',
         'equipment_id' => 'required|exists:equipments,id',
+        'work_excute' => 'nullable|string', // Validation rule for work_excute
+
     ];
 
     public function submitForm()
@@ -67,10 +70,11 @@ class AddRecieveEquipmentComponent extends Component
             'indicator_equipment_id' => $this->indicator_equipment_id,
             'guarantee_status' => "0",
             'case_status' => "Receive",
-            'person_receive'=>$this->person_receive,
-            'date_recieve'=>$this->date_recieve
-
+            'person_receive' => $this->person_receive,
+            'date_recieve' => $this->date_recieve,
+            'work_excute' => $this->work_excute, // New column added here
         ]);
+
 
         session()->flash('success', 'تم إضافة المعدة وأمر الاستلام بنجاح!');
 

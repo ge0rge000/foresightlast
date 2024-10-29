@@ -62,6 +62,11 @@
                     </div>
 
 
+                    <div class="form-group">
+                        <label for="work_excute">تنفيذ العمل</label>
+                        <input type="text" id="work_excute" class="form-control" wire:model="work_excute">
+                        @error('work_excute') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
 
                     <div class="form-group">
                         <label for="equipment_name">سيريال المعدة</label>
@@ -85,17 +90,18 @@
                         @error('name_person') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="name_person">اسم الشخص المستلم</label>
-                        <input type="text" id="person_receive" class="form-control" wire:model="person_receive">
-                        @error('name_person') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="number_person">رقم شخص تابع لشركة</label>
+                        <label for="number_person">رقم شخص المسلم </label>
                         <input type="text" id="number_person" class="form-control" wire:model="number_person">
                         @error('number_person') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="another_number_person">رقم آخر</label>
+                        <label for="name_person">اسم الشخص المستلم</label>
+                        <input type="text" id="person_receive" class="form-control" wire:model="person_receive">
+                        @error('name_person') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="another_number_person">رقم الشخص المستلم </label>
                         <input type="text" id="another_number_person" class="form-control" wire:model="another_number_person">
                         @error('another_number_person') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>

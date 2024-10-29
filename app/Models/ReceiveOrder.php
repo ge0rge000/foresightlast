@@ -26,7 +26,8 @@ class ReceiveOrder extends Model
         'brand_id',
         'type_tool_id',
         'indicator_equipment_id',
-        'date_recieve'
+        'date_recieve',
+        'work_excute', // New column
     ];
     public function user()
     {

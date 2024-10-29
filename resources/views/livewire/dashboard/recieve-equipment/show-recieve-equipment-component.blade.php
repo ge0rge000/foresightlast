@@ -91,6 +91,8 @@
                             <th>رقم الشخص المسلم</th>
                             <th>  اسم شخص المستلم</th>
                             <th>رقم شخص المستلم  </th>
+                            <th> الاعمال المنفذه   </th>
+
                             <th>الحالة</th>
                             <th>الضمان</th>
                             <th>تاريخ الاستلام</th>
@@ -117,6 +119,7 @@
                                 <td>{{ $order->number_person }}</td>
                                 <td>{{ $order->person_receive }}</td>
                                 <td>{{ $order->another_number_person }}</td>
+                                <td>{{ $order->work_excute }}</td>
                                 <td>
                                     {{ $order->case_status == "Receive" ? 'لم يتم تسليم' : 'تم تسليم' }}
                                     <button wire:click="toggleCaseStatus({{ $order->id }})" id="{{ $order->id }}" class="btn btn-secondary btn-sm no-print">

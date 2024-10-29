@@ -60,6 +60,13 @@
 
 
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="date_reaction">تاريخ رد الشكوى</label>
+                                <input type="date" id="date_reaction" class="form-control" wire:model="date_reaction">
+                                @error('date_reaction') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
 
                         <div class="col-md-12">
                             <div class="form-group">

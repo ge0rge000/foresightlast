@@ -13,6 +13,7 @@ class EditComplainComponent extends Component
 {
     public $complainId;
     public $name_complain, $number_of_person, $compain, $user_id, $recieve_order_id, $selected_comapny, $reaction_complain;
+    public $date_reaction;
 
     public function mount($id)
     {
@@ -27,6 +28,8 @@ class EditComplainComponent extends Component
         $this->recieve_order_id = $complain->recieve_order_id;
         $company_select = ReceiveOrder::where('id', $complain->recieve_order_id)->first();
         $this->selected_comapny = $company_select->company->id;
+        $this->date_reaction = $complain->date_reaction;
+
     }
 
     public function submitForm()
@@ -36,17 +39,19 @@ class EditComplainComponent extends Component
             'number_of_person' => 'required|string|max:255',
             'compain' => 'required|string',
             'recieve_order_id' => 'required|exists:receive_orders,id',
-         ]);
-
+            'date_reaction' => 'nullable|date', // Validation for date_reaction
+        ]);
         $complain = Complain::find($this->complainId);
         $complain->update([
             'name_complain' => $this->name_complain,
             'number_of_person' => $this->number_of_person,
             'compain' => $this->compain,
-            'reaction_complain' => $this->reaction_complain,  // Update reaction_complain
+            'reaction_complain' => $this->reaction_complain,
             'user_id' => Auth::user()->id,
             'recieve_order_id' => $this->recieve_order_id,
+            'date_reaction' => $this->date_reaction, // Save date_reaction
         ]);
+
 
         return redirect()->route('show_complains');
     }

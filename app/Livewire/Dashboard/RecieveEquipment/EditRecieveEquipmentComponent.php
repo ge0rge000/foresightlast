@@ -27,6 +27,7 @@ class EditRecieveEquipmentComponent extends Component
     public $serial;
     public $person_receive;
     public $date_recieve;
+    public $work_excute;
 
 
     public function mount($id)
@@ -46,8 +47,9 @@ class EditRecieveEquipmentComponent extends Component
         $this->serial = $receiveOrder->serial;
         $this->person_receive = $receiveOrder->person_receive;
         $this->date_recieve = $receiveOrder->date_recieve;
-
+        $this->work_excute = $receiveOrder->work_excute; // Load work_excute value
     }
+
 
     protected $rules = [
         'user_id' => 'required|exists:users,id',
@@ -78,9 +80,9 @@ class EditRecieveEquipmentComponent extends Component
             'type_tool_id' => $this->type_tool_id,
             'indicator_equipment_id' => $this->indicator_equipment_id,
             'equipment_id' => $this->equipment_id,
-            'person_receive'=>$this->person_receive,
-            'date_recieve'=>$this->date_recieve
-
+            'person_receive' => $this->person_receive,
+            'date_recieve' => $this->date_recieve,
+            'work_excute' => $this->work_excute, // Include work_excute in update
         ]);
 
         session()->flash('success', 'تم تحديث أمر الاستلام بنجاح.');

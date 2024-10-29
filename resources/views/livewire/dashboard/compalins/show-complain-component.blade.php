@@ -45,7 +45,7 @@
 
         <div class="row mb-3">
             <div class="col-md-12">
-                <input type="text" class="form-control" placeholder="بحث بالاسم او اسم الشكوى او رقم الشاكي" wire:model.live.debounce.500ms="searchTerm">
+                <input type="text" class="form-control" placeholder=" البحث بالاسم او اسم الشكوى او رقم الشاكي او اسم الشركه" wire:model.live.debounce.500ms="searchTerm">
             </div>
         </div>
 
@@ -64,6 +64,9 @@
                                 <th>الشكوى</th>
                                 <th>المستخدم</th>
                                 <th>طلب الاستلام</th>
+                                <th>تاريخ استلام الشكوي </th>
+                                <th>تاريخ رد الشكوي </th>
+
                                 <th>رد شكوي</th>
 
                                 <th class="no-print">الإجراءات</th>
@@ -79,6 +82,8 @@
                                     <td>{{ $complain->compain }}</td>
                                     <td>{{ $complain->user->name }}</td>
                                     <td>{{ $complain->receiveOrder->id }}</td>
+                                    <td>{{ $complain->created_at }}</td>
+                                    <td>{{ $complain->date_reaction }}</td>
                                     <td>{{ $complain->reaction_complain }}</td>
 
                                     <td class="no-print">
