@@ -47,6 +47,16 @@
                             <td>{{ $complain->reaction_complain }}</td>
                         </tr>
                         <tr>
+                            <th> تاريخ استلام الشكوي	  </th>
+                            <td>{{ $complain->created_at }}</td>
+                        </tr>
+                        <tr>
+                            <th>   تاريخ رد الشكوي	</th>
+                            <td>{{ $complain->date_reaction }}</td>
+
+                        </tr>
+
+                        <tr>
                             <th>المستخدم</th>
                             <td>{{ $complain->user->name }}</td>
                         </tr>

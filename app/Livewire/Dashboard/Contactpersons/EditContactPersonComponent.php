@@ -17,7 +17,7 @@ class EditContactPersonComponent extends Component
     public $job; // Array to hold selected companies
 
     protected $rules = [
-        'name' => 'required|string|max:255',
+        'name' => 'required|string|max:255|unique:users,name',
         'mobile_number' => 'required|string|max:255',
         'second_mobile_number' => 'nullable|string|max:255',
         'address' => 'required|string|max:255',
