@@ -96,7 +96,9 @@
                             </tbody>
                         </table>
                     </div>
+                    @if ($companies instanceof \Illuminate\Pagination\LengthAwarePaginator)
                     {{ $companies->links() }}
+                @endif
                 </div>
             </div>
         </div>
