@@ -18,6 +18,7 @@ class Complain extends Model
         'recieve_order_id',
         'created_at',
         'updated_at',
+        'date_reaction'
     ];
 
     // Define the relationship to the User model

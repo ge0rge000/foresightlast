@@ -124,6 +124,10 @@
                             <td>{{ $receiveOrder->another_number_person }}</td>
                         </tr>
                         <tr>
+                            <th> الاعمال المنفذه </th>
+                            <td>{{ $receiveOrder->work_excute }}</td>
+                        </tr>
+                        <tr>
                             <th>الحالة</th>
                             <td>{{ $receiveOrder->case_status == "Receive" ? 'لم يتم تسليم' : 'تم تسليم' }}</td>
                         </tr>
