@@ -15,6 +15,7 @@ class ShowRecieveEquipmentComponent extends Component
     public $date_recieve;
     public $created_at;
 
+
     public function updatingSearchTerm()
     {
         $this->resetPage();
@@ -81,6 +82,8 @@ class ShowRecieveEquipmentComponent extends Component
                 $query->orWhere('case_status', '=', 'Receive');
             }
         })
+        ->orderBy('created_at', 'DESC') // You can replace 'created_at' with the desired column
+
         ->get();
 
         return view('livewire.dashboard.recieve-equipment.show-recieve-equipment-component', ['receiveOrders' => $receiveOrders])->layout('layouts.admin');

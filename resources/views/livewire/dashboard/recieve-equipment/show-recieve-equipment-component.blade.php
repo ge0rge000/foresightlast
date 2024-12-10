@@ -49,11 +49,11 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <label for="created_at">تاريخ الاستلام</label>
-            <input type="date" id="created_at" class="form-control" placeholder="تاريخ الاستلام" wire:model.live.debounce.500ms="searchTerm">
+            <input type="date" id="created_at" class="form-control " placeholder="تاريخ الاستلام" wire:model.live.debounce.500ms="searchTerm">
         </div>
         <div class="col-md-6">
             <label for="date_recieve">تاريخ التسليم</label>
-            <input type="date" id="date_recieve" class="form-control" placeholder="تاريخ التسليم" wire:model.live.debounce.500ms="searchTerm">
+            <input type="date" id="date_recieve" class="form-control " placeholder="تاريخ التسليم" wire:model.live.debounce.500ms="searchTerm">
         </div>
 
 
