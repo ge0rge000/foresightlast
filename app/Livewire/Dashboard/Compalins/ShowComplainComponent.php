@@ -26,6 +26,8 @@ class ShowComplainComponent extends Component
                             ->orWhereHas('receiveOrder.company', function($query) use ($searchTerm) {
                                 $query->where('name_company', 'like', $searchTerm);
                             })
+                            ->orderBy('created_at', 'DESC') // You can replace 'created_at' with the desired column
+
                             ->get();
 
         return view('livewire.dashboard.compalins.show-complain-component', compact('complains'))->layout('layouts.admin');

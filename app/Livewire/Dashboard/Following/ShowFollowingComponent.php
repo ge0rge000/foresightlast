@@ -55,6 +55,7 @@ $followinsgs = Following::with(['user', 'contactPerson',  'contactPerson.company
 
         ->orWhere('typefollow', 'like', "%{$this->translatedSearchTerm}%");
     })
+    ->orderBy('created_at', 'DESC') // You can replace 'created_at' with the desired column
     ->get();
 
 
