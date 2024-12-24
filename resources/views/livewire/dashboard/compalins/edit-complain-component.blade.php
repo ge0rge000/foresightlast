@@ -62,6 +62,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label for="date_reaction">تاريخ استلام الشكوى</label>
+                                <input type="date" id="created_at" class="form-control" wire:model="created_at">
+                                @error('created_at') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label for="date_reaction">تاريخ رد الشكوى</label>
                                 <input type="date" id="date_reaction" class="form-control" wire:model="date_reaction">
                                 @error('date_reaction') <span class="text-danger">{{ $message }}</span> @enderror

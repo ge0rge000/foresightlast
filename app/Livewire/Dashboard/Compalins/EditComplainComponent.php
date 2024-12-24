@@ -8,11 +8,12 @@ use App\Models\ReceiveOrder;
 use App\Models\ContactPerson;
 use App\Models\Company;
 use Auth;
+use Carbon\Carbon;
 
 class EditComplainComponent extends Component
 {
     public $complainId;
-    public $name_complain, $number_of_person, $compain, $user_id, $recieve_order_id, $selected_comapny, $reaction_complain;
+    public $name_complain, $number_of_person, $compain, $user_id, $recieve_order_id, $selected_comapny, $reaction_complain,$created_at;
     public $date_reaction;
 
     public function mount($id)
@@ -29,6 +30,8 @@ class EditComplainComponent extends Component
         $company_select = ReceiveOrder::where('id', $complain->recieve_order_id)->first();
         $this->selected_comapny = $company_select->company->id;
         $this->date_reaction = $complain->date_reaction;
+        $this->created_at =Carbon::parse($complain->created_at)->toDateString();
+
 
     }
 
@@ -50,6 +53,7 @@ class EditComplainComponent extends Component
             'user_id' => Auth::user()->id,
             'recieve_order_id' => $this->recieve_order_id,
             'date_reaction' => $this->date_reaction, // Save date_reaction
+            'created_at' => $this->created_at, // Save date_reaction
         ]);
 
 
