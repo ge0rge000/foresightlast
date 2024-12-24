@@ -1,14 +1,76 @@
 <div>
-    @livewireScripts
+    <style>
+        body {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .vertical-table {
+            width: 100%;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .vertical-table th,
+        .vertical-table td {
+            text-align: right;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .vertical-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .brand-logoo {
+            display: block;
+            margin: 20px auto;
+            max-width: 150px;
+            border-radius: 16px;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+
+            .vertical-table {
+                direction: rtl;
+                text-align: right;
+            }
+
+            .vertical-table th,
+            .vertical-table td {
+                text-align: right;
+                padding: 5px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .brand-logoo {
+                display: block;
+                margin: 20px auto;
+                max-width: 150px;
+                border-radius: 16px;
+            }
+        }
+    </style>
+
     <div class="card-content collapse show">
         <div class="card-body">
             <h4 class="form-section"><i class="ft-user"></i> تفاصيل الشكوى</h4>
 
             <!-- Print Button -->
-            <button onclick="printDiv()" class="btn btn-primary mb-3">طباعة</button>
+            <button onclick="printreciveorder()" class="btn btn-primary mb-3 no-print">طباعة</button>
 
-            <div class="table-responsive" id="printableArea">
-                <table class="table table-bordered">
+            <!-- Logo -->
+            <div class="text-center">
+                <img class="brand-logoo" alt="Foresight Egypt" src="{{ asset('photos/logo.jpg') }}">
+            </div>
+
+            <!-- Table -->
+            <div class="table-responsive">
+                <table class="table table-bordered vertical-table">
                     <tbody>
                         <tr>
                             <th>اسم الشاكي</th>
@@ -47,15 +109,13 @@
                             <td>{{ $complain->reaction_complain }}</td>
                         </tr>
                         <tr>
-                            <th> تاريخ استلام الشكوي	  </th>
+                            <th> تاريخ استلام الشكوي </th>
                             <td>{{ $complain->created_at }}</td>
                         </tr>
                         <tr>
-                            <th>   تاريخ رد الشكوي	</th>
+                            <th> تاريخ رد الشكوي </th>
                             <td>{{ $complain->date_reaction }}</td>
-
                         </tr>
-
                         <tr>
                             <th>المستخدم</th>
                             <td>{{ $complain->user->name }}</td>
@@ -69,15 +129,47 @@
             </div>
         </div>
     </div>
+
+    <!-- Hidden iframe for printing -->
+    <iframe id="printIframe" style="display:none;"></iframe>
+
+    <script>
+        function printreciveorder() {
+            // Get the table and logo content
+            var table = document.querySelector(".vertical-table").outerHTML;
+            var logo = '<img class="brand-logoo" alt="Foresight Egypt" src="{{ asset('photos/logo.jpg') }}">';
+
+            // Reference the iframe for printing
+            var iframe = document.getElementById("printIframe");
+            var doc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Write the content to the iframe
+            doc.open();
+            doc.write(`
+                <html lang="ar" dir="rtl">
+                <head>
+                    <title>Print</title>
+                    <style>
+                        @media print {
+                            .no-print { display: none; }
+                            .vertical-table { width: 100%; direction: rtl; text-align: right; }
+                            .vertical-table th, .vertical-table td { text-align: right; padding: 5px; border-bottom: 1px solid #ddd; }
+                            .brand-logoo { display: block; margin: 20px auto; max-width: 150px; border-radius: 16px; }
+                        }
+                        body { font-family: Arial, sans-serif; direction: rtl; text-align: right; }
+                    </style>
+                </head>
+                <body>
+                    ${logo}
+                    ${table}
+                </body>
+                </html>
+            `);
+            doc.close();
+
+            // Trigger the print
+            iframe.contentWindow.focus();
+            iframe.contentWindow.print();
+        }
+    </script>
 </div>
-
-<script>
-    function printDiv() {
-        var printContents = document.getElementById('printableArea').innerHTML;
-        var originalContents = document.body.innerHTML;
-
-        document.body.innerHTML = printContents;
-        window.print();
-        document.body.innerHTML = originalContents;
-    }
-</script>

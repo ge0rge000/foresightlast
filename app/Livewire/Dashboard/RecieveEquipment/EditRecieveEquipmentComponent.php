@@ -10,6 +10,7 @@ use App\Models\TypeTool;
 use App\Models\Brand;
 use App\Models\IndicatorEquipment;
 use Auth;
+use Carbon\Carbon;
 
 class EditRecieveEquipmentComponent extends Component
 {     public $receiveOrderId;
@@ -27,12 +28,15 @@ class EditRecieveEquipmentComponent extends Component
     public $serial;
     public $person_receive;
     public $date_recieve;
+    public $created_at;
+
     public $work_excute;
 
 
     public function mount($id)
     {
         $receiveOrder = ReceiveOrder::findOrFail($id);
+
         $this->receiveOrderId = $receiveOrder->id;
         $this->user_id = $receiveOrder->user_id;
         $this->equipment_id = $receiveOrder->equipment_id;
@@ -47,6 +51,8 @@ class EditRecieveEquipmentComponent extends Component
         $this->serial = $receiveOrder->serial;
         $this->person_receive = $receiveOrder->person_receive;
         $this->date_recieve = $receiveOrder->date_recieve;
+
+        $this->created_at =   Carbon::parse($this->created_at)->toDateString();
         $this->work_excute = $receiveOrder->work_excute; // Load work_excute value
     }
 
@@ -82,7 +88,9 @@ class EditRecieveEquipmentComponent extends Component
             'equipment_id' => $this->equipment_id,
             'person_receive' => $this->person_receive,
             'date_recieve' => $this->date_recieve,
+            'created_at' => $this->created_at, // Include work_excute in update
             'work_excute' => $this->work_excute, // Include work_excute in update
+
         ]);
 
         session()->flash('success', 'تم تحديث أمر الاستلام بنجاح.');

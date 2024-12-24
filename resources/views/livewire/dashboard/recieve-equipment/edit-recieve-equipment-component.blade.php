@@ -107,6 +107,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="date_recieve">تاريخ استلام المعده </label>
+                    <input type="date" name="date_recieve" id="date_recieve" class="form-control"  wire:model="created_at">
+                </div>
+                <div class="form-group">
                     <label for="date_recieve">تاريخ تسليم المعده </label>
                     <input type="date" name="date_recieve" id="date_recieve" class="form-control"  wire:model="date_recieve">
                 </div>

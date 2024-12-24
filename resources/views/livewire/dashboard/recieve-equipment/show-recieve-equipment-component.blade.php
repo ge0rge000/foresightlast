@@ -42,10 +42,9 @@
     <div class="row mb-3">
         <div class="col-md-12">
             <label for="searchTerm">بحث</label>
-            <input type="text" id="searchTerm" class="form-control" placeholder="بحث باسم المعده اوسيريال المعده او اسم شركه او اسم الشخص الذي سلم المعده او رقم شخص اخر او اسم الشخص المستبم او السيريال" wire:model.live.debounce.500ms="searchTerm">
+            <input type="text" id="searchTerm" class="form-control" placeholder="بحث باسم المعده اوسيريال المعده او اسم شركه او اسم الشخص الذي سلم المعده او رقم شخص اخر او اسم الشخص المستلم او السيريال" wire:model.live.debounce.500ms="searchTerm">
         </div>
     </div>
-
     <div class="row mb-3">
         <div class="col-md-6">
             <label for="created_at">تاريخ الاستلام</label>
@@ -55,9 +54,9 @@
             <label for="date_recieve">تاريخ التسليم</label>
             <input type="date" id="date_recieve" class="form-control " placeholder="تاريخ التسليم" wire:model.live.debounce.500ms="searchTerm">
         </div>
-
-
     </div>
+
+
     <div class="row mb-3">
         <div class="col-md-12">
             <label for="filterButtons">تصفية حسب الحالة</label>
