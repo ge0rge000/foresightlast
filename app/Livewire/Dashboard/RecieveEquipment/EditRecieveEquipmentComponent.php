@@ -52,7 +52,7 @@ class EditRecieveEquipmentComponent extends Component
         $this->person_receive = $receiveOrder->person_receive;
         $this->date_recieve = $receiveOrder->date_recieve;
 
-        $this->created_at =   Carbon::parse($this->created_at)->toDateString();
+        $this->created_at =   Carbon::parse($receiveOrder->created_at)->toDateString();
         $this->work_excute = $receiveOrder->work_excute; // Load work_excute value
     }
 
@@ -66,6 +66,7 @@ class EditRecieveEquipmentComponent extends Component
         'type_tool_id' => 'required|exists:type_tools,id',
         'indicator_equipment_id' => 'required|exists:indicator_equipment,id',
         'equipment_id' => 'required|exists:equipments,id',
+        'created_at' => 'required',
     ];
 
     public function submitForm()
